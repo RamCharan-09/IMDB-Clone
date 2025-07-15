@@ -1,17 +1,31 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import Movies from './components/Movies'
+import Watchlist from './components/Watchlist'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <Navbar/>
+      <BrowserRouter>
+
+        <Navbar />
+
+        <Routes>
+          <Route path = '/' element = {<Movies/>}/>
+          <Route path = '/watchlist' element = {<Watchlist/>}/>
+
+          
+        </Routes>
+        
+
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
 export default App
