@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
-
+import Banner from './components/Banner'
 import './App.css'
 import Movies from './components/Movies'
 import Watchlist from './components/Watchlist'
@@ -12,20 +12,22 @@ function App() {
   return (
     <>
       <BrowserRouter>
-
         <Navbar />
 
         <Routes>
-          <Route path = '/' element = {<Movies/>}/>
-          <Route path = '/watchlist' element = {<Watchlist/>}/>
-
-          
+          <Route
+            path="/"
+            element={
+              <>
+                <Banner /> <Movies />
+              </>
+            }
+          />
+          <Route path="/watchlist" element={<Watchlist />} />
         </Routes>
-        
-
       </BrowserRouter>
     </>
-  );
+  )
 }
 
 export default App
