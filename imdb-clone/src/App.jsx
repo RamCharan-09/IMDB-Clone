@@ -9,6 +9,22 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 function App() {
   const [count, setCount] = useState(0);
 
+  let [watchlist, setWatchList] = useState([])
+
+  let handleAddtoWatchList = (movieObj) => {
+    let newWatchList = [...watchlist, movieObj]
+    setWatchList(newWatchList)
+    console.log(newWatchList)
+  }
+
+  let handleRemoveFromWatchList = (movieObj) => {
+    let filteredWatchList = watchlist.filter((movie)=>{
+      return movie.id != movieObj.id
+    })
+    setWatchList(filteredWatchList)
+    console.log(filteredWatchList)
+  }
+
   return (
     <>
       <BrowserRouter>
@@ -19,7 +35,8 @@ function App() {
             path="/"
             element={
               <>
-                <Banner /> <Movies />
+                <Banner /> 
+                <Movies watchlist={watchlist} handleAddtoWatchList={handleAddtoWatchList} handleRemoveFromWatchList = {handleRemoveFromWatchList}/>
               </>
             }
           />
